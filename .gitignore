@@ -1,3 +1,5 @@
+# Big input and output data files that have to be added manually later
+data/
 
 # Created by https://www.toptal.com/developers/gitignore/api/pycharm+all,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=pycharm+all,python
