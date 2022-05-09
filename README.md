@@ -10,4 +10,5 @@ Install [conda](https://docs.conda.io/en/latest/miniconda.html), create an envir
 **[geopandas](https://geopandas.org/en/stable/):** `conda install -c conda-forge geopandas` \
 **[atlite](https://atlite.readthedocs.io/en/latest/installation.html):** `conda install -c conda-forge atlite`\
 **[jupyterlab](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html):** `conda install -c conda-forge jupyterlab`\
-**[scikit-learn](https://scikit-learn.org/stable/install.html):** `conda install -c conda-forge scikit-learn` `conda install -c intel scikit-learn`
+**[scikit-learn](https://scikit-learn.org/stable/install.html):** `conda install -c conda-forge scikit-learn` `conda install -c intel scikit-learn`\
+**[ngboost](https://github.com/stanfordmlgroup/ngboost):** `conda install -c conda-forge ngboost`
