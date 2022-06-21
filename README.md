@@ -12,3 +12,4 @@ Install [conda](https://docs.conda.io/en/latest/miniconda.html), create an envir
 **[jupyterlab](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html):** `conda install -c conda-forge jupyterlab`\
 **[scikit-learn](https://scikit-learn.org/stable/install.html):** `conda install -c conda-forge scikit-learn` `conda install -c intel scikit-learn`\
 **[ngboost](https://github.com/stanfordmlgroup/ngboost):** `conda install -c conda-forge ngboost`
+**[seaborn](https://seaborn.pydata.org/index.html):** `conda install -c conda-forge seaborn`
