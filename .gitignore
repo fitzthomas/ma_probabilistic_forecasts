@@ -1,5 +1,6 @@
 # Big input and output resources files that have to be added manually later
 resources/
+results/
 
 # Created by https://www.toptal.com/developers/gitignore/api/pycharm+all,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=pycharm+all,python
