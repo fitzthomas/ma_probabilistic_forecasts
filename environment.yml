@@ -1,0 +1,23 @@
+name: ma_probabilistic_forecasts
+
+channels:
+  - anaconda
+  - conda-forge
+
+dependencies:
+  - python>=3.8
+  - pip
+
+  - xarray
+  - dask
+  - netCDF4
+  - bottleneck
+  - geopandas
+  - atlite
+  - jupyterlab
+  - scikit-learn
+  - ngboost
+  - seaborn
+  - ephem
+  - pickle5
+  - pypsa
