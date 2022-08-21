@@ -9,7 +9,7 @@ from sklearn.metrics import mean_pinball_loss
 from sklearn.metrics import mean_squared_error as mse
 
 
-def coverage_fraction(y_true, y_low, y_high) -> float:
+def coverage_fraction(y_true, y_low, y_high):
     """
     Computes the percentage of observations that fall between the quantile predictions. Two single-valued quantile
     predictions, with quantiles 𝛼_𝑙𝑜𝑤 < 𝛼_ℎ𝑖𝑔ℎ describe a (𝛼_ℎ𝑖𝑔ℎ − 𝛼_𝑙𝑜𝑤)%-confidence interval. The
@@ -28,7 +28,7 @@ def negative_log_likelihood(y_true, y_pred_dist: Normal) -> float:
     Computes the negative log likelihood (NLL) of the probabilistic forecast.
 
     :param y_true: Ground truth, correct target values.
-    :param y_pred_dist: Estimated target values in the form of a normal distributon as defined in ngboost.
+    :param y_pred_dist: Estimated target values in the form of a normal distribution as defined in ngboost.
     :return: The NLL is a negative floating point. Smaller values are better.
     """
     return -y_pred_dist.logpdf(y_true).mean()

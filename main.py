@@ -1,16 +1,12 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from era5_mapper import *
+from pathlib import Path
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    era5_regions_path = Path(config.paths["era5_regions"])
+    if era5_regions_path.is_file():
+        print(f'The file {config.paths["era5_regions"]} exists')
+    else:
+        print(f'The file {config.paths["era5_regions"]} does not exist yet. Start creation process ...')
+        create_era5_region()
