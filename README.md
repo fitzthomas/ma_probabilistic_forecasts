@@ -18,3 +18,6 @@ Install [conda](https://docs.conda.io/en/latest/miniconda.html), create an envir
 **[pypsa](https://pypsa.org/):** `conda install -c conda-forge pypsa
 `
 
+### Weather Data Cutout
+
+[europe-2013-era5.nc](https://zenodo.org/record/4709858#.YZUVdCYo8WM)
