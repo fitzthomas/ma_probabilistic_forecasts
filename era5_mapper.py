@@ -2,13 +2,14 @@
 This file contains functions to reduce the era5 dataset to regions defined by shapefiles.
 """
 
+from energy_type import EnergyType
 import config
 import numpy as np
 import xarray as xr
 import geopandas as gpd
 from pathlib import Path
 from shapely.geometry import Point
-
+from enum import Enum
 
 def create_era5_region():
     """
@@ -181,3 +182,20 @@ def _create_era5_region_data(era_data, gdf_onshore, gdf_offshore, regions_onshor
     )
 
     ds.to_netcdf(config.paths["era5_regions"])
+
+
+def get_era5_region_name(region_name: str, energy_type: EnergyType) -> str:
+    """
+    Returns the name or string that addresses the given region and energy type which can be used to address the data in the feature data set (era5)
+    :param region_name: name of the region
+    :param energy_type: the uses energy type in that region
+    :return: string that can be used to fetch data from the feature data set
+    """
+    era5_region_name = region_name + " 0"
+    if energy_type == EnergyType.ONWIND or energy_type == EnergyType.SOLAR or energy_type == EnergyType.ROR:
+        era5_region_name += " on"
+    elif energy_type == EnergyType.OFFWIND_AC or energy_type == EnergyType.OFFWIND_DC:
+        era5_region_name += " off"
+    else:
+        era5_region_name += ""
+    return era5_region_name

@@ -1,5 +1,6 @@
 from era5_mapper import *
 from pathlib import Path
+from forecast import *
 
 
 if __name__ == '__main__':
@@ -10,3 +11,6 @@ if __name__ == '__main__':
     else:
         print(f'The file {config.paths["era5_regions"]} does not exist yet. Start creation process ...')
         create_era5_region()
+
+    forecaster = Forecast()
+    forecaster.forecast_regression()
