@@ -1,4 +1,5 @@
 from src.forecast import *
+from src.daytime_checker import *
 
 
 if __name__ == '__main__':
@@ -12,3 +13,7 @@ if __name__ == '__main__':
 
     forecaster = Forecast()
     forecaster.forecast_regression()
+
+    # checker = DaytimeChecker()
+    # lon, lat = checker.get_centroid_cea(True, "DE0 0")
+    # checker.is_daytime(lon, lat)

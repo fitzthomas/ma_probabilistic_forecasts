@@ -85,11 +85,11 @@ class Forecast:
 
             output_file = "capfacts_pred_q" + str(int(q * 100)) + ".csv"
             results[q].to_csv(output_dir / output_file)
-            print("Finished regression for q = ", q, ". Saved results to: ", output_dir, "/", output_file)
+            print("Finished regression for q = ", q, ". Saved results to: ", output_dir / output_file)
 
             cols_num = results[q].select_dtypes(np.number).columns
             results[q][cols_num] = results[q][cols_num].clip(lower=0, upper=1.02)
 
             output_file = "capfacts_pred_q" + str(int(q * 100)) + "_clipped.csv"
             results[q].to_csv(output_dir / output_file)
-            print("Finished regression for q = ", q, ". Saved the clipped results to: ", output_dir, "/", output_file)
+            print("Finished regression for q = ", q, ". Saved the clipped results to: ", output_dir / output_file)
