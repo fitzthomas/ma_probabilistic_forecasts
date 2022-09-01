@@ -1,6 +1,4 @@
-from era5_mapper import *
-from pathlib import Path
-from forecast import *
+from src.forecast import *
 
 
 if __name__ == '__main__':

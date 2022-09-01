@@ -1,5 +1,5 @@
-from energy_type import EnergyType
-from features import Feature
+from src.energy_type import EnergyType
+from src.features import Feature
 
 """
 The configuration file contains all global data, such as file paths.

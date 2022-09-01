@@ -2,7 +2,7 @@
 This file contains functions to reduce the era5 dataset to regions defined by shapefiles.
 """
 
-from energy_type import EnergyType
+from src.energy_type import EnergyType
 import config
 import numpy as np
 import xarray as xr

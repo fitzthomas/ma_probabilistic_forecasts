@@ -1,4 +1,4 @@
-from era5_mapper import *
+from src.era5_mapper import *
 
 import config
 import pandas as pd

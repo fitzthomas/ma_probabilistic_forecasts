@@ -1,4 +1,4 @@
-from forecast_data import *
+from src.forecast_data import *
 import config
 
 import pandas as pd
@@ -9,9 +9,9 @@ from ngboost.scores import LogScore
 
 
 class Forecast:
-"""
-The class provides functions to make predictions. Predictions are made for all regions and the configured quantiles.
-"""
+    """
+    The class provides functions to make predictions. Predictions are made for all regions and the configured quantiles.
+    """
     def __init__(self, _quantiles=None):
         """
         Initializes the required data set and the quantiles for which the predictions are to be made.
