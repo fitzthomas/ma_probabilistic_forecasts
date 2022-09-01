@@ -1,6 +1,8 @@
 from src.energy_type import EnergyType
 from src.features import Feature
 
+from sklearn.tree import DecisionTreeRegressor
+
 """
 The configuration file contains all global data, such as file paths.
 """
@@ -32,9 +34,22 @@ Default quantiles that are used for the prediction if not defined otherwise
 """
 default_quantiles = [0.4, 0.5, 0.6]
 
-
 """
 Default setting for the NGBoost regression
 """
 test_size = 0.25
 random_state = 42
+
+"""
+Example of a parameter grid for GridSearchCV hyperparameter optimization
+"""
+base1 = DecisionTreeRegressor(criterion='friedman_mse', max_depth=2)
+base2 = DecisionTreeRegressor(criterion='friedman_mse', max_depth=3)
+base3 = DecisionTreeRegressor(criterion='friedman_mse', max_depth=4)
+param_grid= {
+    'Base': [base1, base2, base3],
+    'n_estimators': [500, 100, 1000],
+    'learning_rate': [0.01],
+    'minibatch_frac': [1, 0.5],
+    'col_sample': [1, 0.5]
+}

@@ -1,6 +1,8 @@
 from src.forecast import *
 from src.daytime_checker import *
 
+from sklearn.tree import DecisionTreeRegressor
+
 
 if __name__ == '__main__':
 
@@ -12,8 +14,10 @@ if __name__ == '__main__':
         create_era5_region()
 
     forecaster = Forecast()
-    forecaster.forecast_regression()
+    # forecaster.forecast_regression()
 
     # checker = DaytimeChecker()
     # lon, lat = checker.get_centroid_cea(True, "DE0 0")
     # checker.is_daytime(lon, lat)
+
+    forecaster.forecast_regression_grid_search(config.param_grid)
