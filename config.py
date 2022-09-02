@@ -46,7 +46,7 @@ Example of a parameter grid for GridSearchCV hyperparameter optimization
 base1 = DecisionTreeRegressor(criterion='friedman_mse', max_depth=2)
 base2 = DecisionTreeRegressor(criterion='friedman_mse', max_depth=3)
 base3 = DecisionTreeRegressor(criterion='friedman_mse', max_depth=4)
-param_grid= {
+param_grid = {
     'Base': [base1, base2, base3],
     'n_estimators': [500, 100, 1000],
     'learning_rate': [0.01],

@@ -1,5 +1,6 @@
 from src.forecast import *
 from src.daytime_checker import *
+from src.era5_mapper import *
 
 from sklearn.tree import DecisionTreeRegressor
 
@@ -11,13 +12,15 @@ if __name__ == '__main__':
         print(f'The file {config.paths["era5_regions"]} exists')
     else:
         print(f'The file {config.paths["era5_regions"]} does not exist yet. Start creation process ...')
-        create_era5_region()
+        mapper = Era5Mapper()
+        mapper.create_era5_region()
+        # create_era5_region()
 
     forecaster = Forecast()
-    # forecaster.forecast_regression()
+    forecaster.forecast_regression()
 
     # checker = DaytimeChecker()
     # lon, lat = checker.get_centroid_cea(True, "DE0 0")
     # checker.is_daytime(lon, lat)
 
-    forecaster.forecast_regression_grid_search(config.param_grid)
+    # forecaster.forecast_regression_grid_search(config.param_grid)
