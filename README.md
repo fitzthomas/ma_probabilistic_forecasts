@@ -87,7 +87,7 @@ checker.is_daytime(lon, lat)
 ## PyPSA-Eur Integration
 
 A big thank you goes to Martha for providing a workflow for integrating capacity factor predictions into
-PyPSA-Eur ([Link zum Repository](https://github.com/martacki/thomas-ma)).
+PyPSA-Eur ([Link to the Repository](https://github.com/martacki/thomas-ma)).
 
 ## Other notes
 
