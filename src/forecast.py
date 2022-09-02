@@ -67,8 +67,7 @@ class Forecast:
                 print("Fit Regression Model for region ", region_name)
                 ngb = NGBRegressor(Dist=Normal, Score=LogScore, n_estimators=1000, random_state=42, verbose=True)
                 ngb.fit(X=X_train, Y=Y_train, X_val=X_test, Y_val=Y_test, early_stopping_rounds=2)
-                print("Iteration with best validation score: ", ngb.best_val_loss_itr)
-                print("Feature Importances: ", ngb.feature_importances_)
+                self._print_feature_importances(ngb.feature_importances_, energy_type)
 
                 print("Predict capacity factors for region ", region_name, "with quantiles: ", self.quantiles)
                 Y_dists = ngb.pred_dist(X_pred, max_iter=ngb.best_val_loss_itr)
@@ -83,6 +82,15 @@ class Forecast:
             new_columns[q] = pd.DataFrame(new_columns[q], index=results[q].index)
             results[q] = pd.concat([results[q], new_columns[q]], axis=1)
             self._clip_and_save(results[q], q)
+
+    def _print_feature_importances(self, feature_importances_, energy_type: EnergyType):
+        feature_names = config.feature_set[energy_type]
+        print("μ --> {0}: {1}, {2}: {3}, {4}: {5}".format(feature_names[0].value, feature_importances_[0][0],
+                                                          feature_names[1].value, feature_importances_[0][1],
+                                                          feature_names[2].value, feature_importances_[0][2]))
+        print("σ --> {0}: {1}, {2}: {3}, {4}: {5}".format(feature_names[0].value, feature_importances_[1][0],
+                                                          feature_names[1].value, feature_importances_[1][1],
+                                                          feature_names[2].value, feature_importances_[1][2]))
 
     def _calculate_scores(self, Y_true, Y_pred, q, Y_dists=None, clipped=False):
         """
@@ -111,7 +119,7 @@ class Forecast:
             else:
                 s = "PL " + str(q) + " clipped"
                 scores[s] = pinball_loss(Y_true, Y_pred, q)
-        print("Scores for q =", q, "\n", scores)
+        print("Scores for q =", q, scores)
 
     def _clip_and_save(self, result, q):
         """
