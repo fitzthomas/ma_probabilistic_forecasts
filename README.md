@@ -95,4 +95,4 @@ PyPSA-Eur ([Link to the Repository](https://github.com/martacki/thomas-ma)).
   after the migration from Notebooks to Python scripts
 - Other notebooks that served as implementations and for testing during the development are located in the
   directories `notebooks_archive/` and `testing_playground`, but have been removed from the current repository in commit
-  xy.
+  [2e91cf1368685da2705e26a4b5963d63043c9c34](https://github.com/fitzthomas/ma_probabilistic_forecasts/commit/2e91cf1368685da2705e26a4b5963d63043c9c34).
