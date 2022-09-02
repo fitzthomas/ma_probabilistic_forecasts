@@ -1,16 +1,13 @@
-name: ma_probabilistic_forecasts
+name: ma_probabilistic_forecast
 
 channels:
-  - anaconda
-  - conda-forge
+  - defaults
 
 dependencies:
-  - python>=3.8
-  - pip
-
+  - python=3.10
+  - netcdf4
   - xarray
   - dask
-  - netCDF4
   - bottleneck
   - geopandas
   - atlite
@@ -19,5 +16,4 @@ dependencies:
   - ngboost
   - seaborn
   - ephem
-  - pickle5
   - pypsa
