@@ -1,4 +1,5 @@
 from src.forecast_data import *
+from src.metrics import *
 import config
 
 import pandas as pd
@@ -75,12 +76,42 @@ class Forecast:
                 for q in self.quantiles:
                     Y_pred = Y_dists.ppf(q)
                     new_columns[q][col_name] = pd.Series(Y_pred)
+                    self._calculate_scores(Y, Y_pred, q, Y_dists, False)
                 print("------------------------------------------------------------------\n")
 
         for q in self.quantiles:
             new_columns[q] = pd.DataFrame(new_columns[q], index=results[q].index)
             results[q] = pd.concat([results[q], new_columns[q]], axis=1)
             self._clip_and_save(results[q], q)
+
+    def _calculate_scores(self, Y_true, Y_pred, q, Y_dists=None, clipped=False):
+        """
+        Calculates and prints the scores of the predictions
+
+        :param Y_true: Ground truth of the prediction
+        :param Y_pred: Predicted values
+        :param q: quantil
+        :param Y_dists: Predicted distribution. NLL ist calculated if this is not None
+        :param clipped: True if Y_pred is clipped, false otherwise
+        """
+        scores = {}
+        if not clipped:
+            if q == 0.5:
+                scores["RMSE"] = root_mean_squared_error(Y_true, Y_pred)
+                scores["MAE"] = mean_absolute_error(Y_true, Y_pred)
+            else:
+                s = "PL " + str(q)
+                scores[s] = pinball_loss(Y_true, Y_pred, q)
+            if Y_dists is not None:
+                scores["NLL"] = negative_log_likelihood(Y_true, Y_dists)
+        else:
+            if q == 0.5:
+                scores["RMSE clipped"] = root_mean_squared_error(Y_true, Y_pred)
+                scores["MAE clipped"] = mean_absolute_error(Y_true, Y_pred)
+            else:
+                s = "PL " + str(q) + " clipped"
+                scores[s] = pinball_loss(Y_true, Y_pred, q)
+        print("Scores for q =", q, "\n", scores)
 
     def _clip_and_save(self, result, q):
         """
